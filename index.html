@@ -60,7 +60,7 @@ body::before{
     radial-gradient(ellipse 60% 40% at 80% 80%,rgba(212,184,122,.08),transparent 50%);
   pointer-events:none;z-index:0;
 }
-.page{position:relative;z--index:1;max-width:420px;margin:0 auto;padding:2.5rem 1.25rem 3rem}
+.page{position:relative;z-index:1;max-width:420px;margin:0 auto;padding:2.5rem 1.25rem 3rem}
 .lang-switch{display:flex;justify-content:flex-end;margin-bottom:1.25rem}
 .lang-btn{display:inline-flex;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.3rem}
 .lang-btn button{
@@ -69,7 +69,7 @@ body::before{
 }
 .lang-btn button.active{background:var(--accent);color:#0c1017}
 .lang-btn button:not(.active):hover{color:var(--text)}
-.{text-align:center;margin-bottom:1.75rem}
+.profile{text-align:center;margin-bottom:1.75rem}
 .avatar{
   width:96px;height:96px;border-radius:50%;background:#fff;
   border:3px solid rgba(212,184,122,.45);display:flex;align-items:center;justify-content:center;
@@ -150,7 +150,8 @@ body.lang-en .ing-desc[data-lang=en]{display:block!important}
 
   <header class="profile">
     <div class="avatar">
-      <img src="data:image/jpeg;base64,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" alt="Gummy Baku" width="80" height="80"/>
+      <img src="logo.jpg" alt="Gummy Baku" width="80" height="80" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <span style="display:none;font-size:2rem;align-items:center;justify-content:center;width:100%;height:100%">🍬</span>
     </div>
     <h1 class="brand-name">
       <span data-lang="zh">引貘飴</span>
@@ -181,7 +182,7 @@ body.lang-en .ing-desc[data-lang=en]{display:block!important}
     <div class="section" id="product-section">
       <button class="section-toggle" type="button" aria-expanded="false">
         <span><span data-lang="zh">產品介紹</span><span data-lang="en">About the Product</span></span>
-        <span class="="chevron">▼</span>
+        <span class="chevron">▼</span>
       </button>
       <div class="section-body"><div class="section-content">
         <p data-lang="zh">引貘飴（Gummy Baku）是眠夢工房專為香港高壓專業人士研發的夜間支持軟糖。</p>
