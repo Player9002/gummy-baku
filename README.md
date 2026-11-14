@@ -1,10 +1,7 @@
-# 引貌餅 Gummy Baku
+# 引貘飴 Gummy Baku
 
 Melatonin-free sleep support gummy landing page by Sleep Craft (眠夢工房).
 
-## Live site
-
-Enable GitHub Pages: Settings → Pages → Source: Deploy from branch `main`, folder `/ (root)`.
 
 Then open:
 
