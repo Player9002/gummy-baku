@@ -31,17 +31,28 @@ body.lang-en .section-content{
   line-height:1.75;
   font-size:.9rem;
 }
-body.lang-en .section-content p{margin-bottom:.65rem}
+body.lang-en .section-content p{margin-bottom:.7rem}
 body.lang-en .section-content h4{
+  display:block;
   letter-spacing:0.01em;
-  margin:1.15rem 0 .45rem;
+  margin:1.2rem 0 .5rem;
+  font-size:.95rem;
 }
+body.lang-en .section-content h4:first-of-type{margin-top:.4rem}
 body.lang-en .brand-name{letter-spacing:-0.015em}
 body.lang-en .brand-sub{letter-spacing:0.02em}
 body.lang-en .link-btn{letter-spacing:0.02em}
-body.lang-en .ingredient{padding:.85rem 0}
-body.lang-en .ing-name{letter-spacing:0.01em;margin-bottom:.25rem}
-body.lang-en .badge{letter-spacing:0.04em}
+body.lang-en .ingredient{padding:.9rem 0}
+body.lang-en .ing-name{
+  display:block;
+  letter-spacing:0.01em;
+  margin-bottom:.3rem;
+}
+body.lang-en .ing-desc{
+  display:block;
+  line-height:1.65;
+}
+body.lang-en .badge{letter-spacing:0.04em;font-size:.72rem}
 body::before{
   content:"";position:fixed;inset:0;
   background:
@@ -73,7 +84,6 @@ body::before{
   font-size:.75rem;font-weight:500;padding:.3rem .75rem;border-radius:999px;
   background:rgba(212,184,122,.12);color:var(--gold);border:1px solid rgba(212,184,122,.22);
 }
-body.lang-en .badge{font-size:.72rem;letter-spacing:0.03em}
 .links{display:flex;flex-direction:column;gap:.85rem;margin-top:1.75rem}
 .link-btn{
   display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;
@@ -96,26 +106,32 @@ body.lang-en .badge{font-size:.72rem;letter-spacing:0.03em}
 .section-toggle .chevron{transition:transform .25s;font-size:.85rem;color:var(--muted)}
 .section.open .chevron{transform:rotate(180deg)}
 .section-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.section.open .section-body{max-height:1600px}
+.section.open .section-body{max-height:1800px}
 .section-content{padding:0 1.25rem 1.35rem;color:var(--muted);font-size:.92rem}
-body.lang-en .section-content{font-size:.9rem}
-.section-content h4{color:var(--text);font-size:.95rem;margin:1rem 0 .4rem}
+.section-content h4{color:var(--text);font-size:.95rem;margin:1rem 0 .4rem;display:block}
 .section-content h4:first-child{margin-top:.2rem}
-.section-content p{margin-bottom:.55rem}
+.section-content p{margin-bottom:.55rem;display:block}
 .ingredient{display:flex;gap:.75rem;padding:.75rem 0;border-bottom:1px solid var(--border)}
 .ingredient:last-child{border-bottom:none;padding-bottom:0}
 .dose{flex-shrink:0;font-weight:700;color:var(--gold);font-size:.9rem;min-width:58px;padding-top:.1rem}
 .ing-name{font-weight:600;color:var(--text);display:block;margin-bottom:.2rem}
-body.lang-en .ing-name{letter-spacing:0.01em}
+.ing-desc{display:block}
 .footer{
   text-align:center;margin-top:2.5rem;padding-top:1.5rem;
   border-top:1px solid var(--border);font-size:.78rem;color:var(--muted);line-height:1.55;
 }
 .footer .company{font-weight:600;color:var(--text);margin-bottom:.4rem}
 .disclaimer{margin-top:.9rem;opacity:.7;font-size:.72rem;max-width:340px;margin-left:auto;margin-right:auto}
+
+/* Language toggle – critical fix for block vs inline */
 body:not(.lang-en) [data-lang=en]{display:none!important}
 body.lang-en [data-lang=zh]{display:none!important}
-body.lang-en [data-lang=en]{display:unset}
+/* spans stay inline by default; force block for structural elements */
+body.lang-en h4[data-lang=en],
+body.lang-en p[data-lang=en]{display:block!important}
+body.lang-en .ing-name[data-lang=en],
+body.lang-en .ing-desc[data-lang=en]{display:block!important}
+
 @media(max-width:380px){
   .page{padding:2rem 1rem 2.5rem}
   .avatar{width:84px;height:84px}
@@ -134,7 +150,7 @@ body.lang-en [data-lang=en]{display:unset}
 
   <header class="profile">
     <div class="avatar">
-      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEBAUEBAUFBgYGBgcGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGIiICIiAiIgIiICIiD//Z" alt="Gummy Baku"/>
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERESExMVFBQVFhUYGhgaGhwcHR0fICEiIyQlJiYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGxsjJy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8A" alt="Gummy Baku" width="80" height="80"/>
     </div>
     <h1 class="brand-name">
       <span data-lang="zh">引貘飴</span>
@@ -170,10 +186,12 @@ body.lang-en [data-lang=en]{display:unset}
       <div class="section-body"><div class="section-content">
         <p data-lang="zh">引貘飴（Gummy Baku）是眠夢工房專為香港高壓專業人士研發的夜間支持軟糖。</p>
         <p data-lang="en">Gummy Baku is a night-time support gummy developed by Sleep Craft for high-pressure professionals in Hong Kong.</p>
+
         <h4 data-lang="zh">核心特點</h4>
         <h4 data-lang="en">Key Features</h4>
         <p data-lang="zh">• 完全不含褪黑激素與藥物活性成分<br/>• 軟糖形式，把補充變成愉悅的睡前儀式<br/>• 定位為一般食品／膳食補充品<br/>• 委託具備 GHP / HACCP / ISO 22000 認證的合約製造商生產</p>
         <p data-lang="en">• Completely free of melatonin and pharmaceutical actives<br/>• Gummy format turns daily use into an enjoyable bedtime ritual<br/>• Positioned as a general food / dietary supplement<br/>• Made by partners certified to GHP, HACCP, or ISO 22000</p>
+
         <h4 data-lang="zh">適合誰</h4>
         <h4 data-lang="en">Who It’s For</h4>
         <p data-lang="zh">25–45 歲高壓在職專業人士、夜間易醒者、輪班工作者、常旅客，以及希望避免褪黑激素的消費者。</p>
@@ -195,8 +213,8 @@ body.lang-en [data-lang=en]{display:unset}
           <div>
             <span class="ing-name" data-lang="zh">檸檬酸鎂</span>
             <span class="ing-name" data-lang="en">Magnesium Citrate</span>
-            <span data-lang="zh">支持 NMDA 與 GABA 調節，生物利用率佳、腸胃耐受度高。</span>
-            <span data-lang="en">Supports NMDA and GABA pathways. High bioavailability and gentle on the stomach.</span>
+            <span class="ing-desc" data-lang="zh">支持 NMDA 與 GABA 調節，生物利用率佳、腸胃耐受度高。</span>
+            <span class="ing-desc" data-lang="en">Supports NMDA and GABA pathways. High bioavailability and gentle on the stomach.</span>
           </div>
         </div>
         <div class="ingredient">
@@ -204,8 +222,8 @@ body.lang-en [data-lang=en]{display:unset}
           <div>
             <span class="ing-name" data-lang="zh">L-茶胺酸</span>
             <span class="ing-name" data-lang="en">L-Theanine</span>
-            <span data-lang="zh">改善入睡與睡眠質素，無次日昏沉，帶來放鬆而清醒的狀態。</span>
-            <span data-lang="en">Supports sleep onset and quality without next-day drowsiness — calm yet clear-headed.</span>
+            <span class="ing-desc" data-lang="zh">改善入睡與睡眠質素，無次日昏沉，帶來放鬆而清醒的狀態。</span>
+            <span class="ing-desc" data-lang="en">Supports sleep onset and quality without next-day drowsiness — calm yet clear-headed.</span>
           </div>
         </div>
         <div class="ingredient">
@@ -213,8 +231,8 @@ body.lang-en [data-lang=en]{display:unset}
           <div>
             <span class="ing-name" data-lang="zh">維生素 B6</span>
             <span class="ing-name" data-lang="en">Vitamin B₆</span>
-            <span data-lang="zh">作為 GABA 與血清素合成的重要輔因子。</span>
-            <span data-lang="en">An essential cofactor for GABA and serotonin synthesis.</span>
+            <span class="ing-desc" data-lang="zh">作為 GABA 與血清素合成的重要輔因子。</span>
+            <span class="ing-desc" data-lang="en">An essential cofactor for GABA and serotonin synthesis.</span>
           </div>
         </div>
         <div class="ingredient">
@@ -222,8 +240,8 @@ body.lang-en [data-lang=en]{display:unset}
           <div>
             <span class="ing-name" data-lang="zh">芹菜素 (Apigenin)</span>
             <span class="ing-name" data-lang="en">Apigenin</span>
-            <span data-lang="zh">調節 GABA-A 受體；配方採用微粉化／載體技術提升吸收。</span>
-            <span data-lang="en">Modulates GABA-A receptors. Micronised / carrier technology improves absorption.</span>
+            <span class="ing-desc" data-lang="zh">調節 GABA-A 受體；配方採用微粉化／載體技術提升吸收。</span>
+            <span class="ing-desc" data-lang="en">Modulates GABA-A receptors. Micronised / carrier technology improves absorption.</span>
           </div>
         </div>
         <div class="ingredient">
@@ -231,8 +249,8 @@ body.lang-en [data-lang=en]{display:unset}
           <div>
             <span class="ing-name" data-lang="zh">芝麻素 (Sesamin)</span>
             <span class="ing-name" data-lang="en">Sesamin</span>
-            <span data-lang="zh">有助改善主觀睡眠質素與抗氧化狀態；以乳化／脂質載體確保吸收。</span>
-            <span data-lang="en">Supports subjective sleep quality and antioxidant status. Emulsified for reliable absorption.</span>
+            <span class="ing-desc" data-lang="zh">有助改善主觀睡眠質素與抗氧化狀態；以乳化／脂質載體確保吸收。</span>
+            <span class="ing-desc" data-lang="en">Supports subjective sleep quality and antioxidant status. Emulsified for reliable absorption.</span>
           </div>
         </div>
       </div></div>
