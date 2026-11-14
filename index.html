@@ -1,12 +1,139 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="refresh" content="0; url=landing.html" />
-  <title>Gummy Baku</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>引貘飴 Gummy Baku | 眠夢工房 Sleep Craft</title>
+<meta name="description" content="Melatonin-free science-backed sleep gummy by Sleep Craft"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0c1017;--card:rgba(255,255,255,.06);--card-h:rgba(255,255,255,.11);--border:rgba(255,255,255,.1);--text:#f0f4f8;--muted:#9aafc4;--gold:#d4b87a;--accent:#8ba4ff;--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans TC","Inter",system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;-webkit-font-smoothing:antialiased}
+body.lang-en{font-family:"Inter","Noto Sans TC",system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(139,164,255,.14),transparent 55%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(212,184,122,.08),transparent 50%);pointer-events:none;z-index:0}
+.page{position:relative;z-index:1;max-width:420px;margin:0 auto;padding:2.5rem 1.25rem 3rem}
+.lang-switch{display:flex;justify-content:flex-end;margin-bottom:1.25rem}
+.lang-btn{display:inline-flex;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.3rem}
+.lang-btn button{border:none;background:transparent;color:var(--muted);font-family:inherit;font-size:.8rem;font-weight:600;padding:.35rem .75rem;border-radius:999px;cursor:pointer}
+.lang-btn button.active{background:var(--accent);color:#0c1017}
+.profile{text-align:center;margin-bottom:1.75rem}
+.avatar{width:96px;height:96px;border-radius:50%;background:#fff;border:3px solid rgba(212,184,122,.45);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;box-shadow:0 8px 28px rgba(0,0,0,.35);overflow:hidden;padding:8px}
+.avatar img{width:100%;height:100%;object-fit:contain}
+.brand-name{font-size:1.35rem;font-weight:700;margin-bottom:.2rem}
+.brand-sub{font-size:.9rem;color:var(--gold);font-weight:500;margin-bottom:.85rem}
+.bio{font-size:.95rem;color:var(--muted);max-width:340px;margin:0 auto}
+.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
+.badge{font-size:.75rem;font-weight:500;padding:.28rem .7rem;border-radius:999px;background:rgba(212,184,122,.12);color:var(--gold);border:1px solid rgba(212,184,122,.22)}
+.links{display:flex;flex-direction:column;gap:.85rem;margin-top:1.75rem}
+.link-btn{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;padding:1rem 1.25rem;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s}
+.link-btn:hover{background:var(--card-h);transform:translateY(-2px)}
+.link-btn.primary{background:linear-gradient(135deg,#8ba4ff,#6b86e8);color:#0c1017;border:none;box-shadow:0 6px 20px rgba(139,164,255,.3)}
+.section{border-radius:var(--radius);background:var(--card);border:1px solid var(--border);overflow:hidden}
+.section-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;background:transparent;border:none;color:var(--text);font-family:inherit;font-size:1rem;font-weight:600;cursor:pointer;text-align:left}
+.section-toggle .chevron{transition:transform .25s;font-size:.85rem;color:var(--muted)}
+.section.open .chevron{transform:rotate(180deg)}
+.section-body{max-height:0;overflow:hidden;transition:max-height .35s}
+.section.open .section-body{max-height:1400px}
+.section-content{padding:0 1.25rem 1.35rem;color:var(--muted);font-size:.92rem}
+.section-content h4{color:var(--text);font-size:.95rem;margin:1rem 0 .35rem}
+.ingredient{display:flex;gap:.75rem;padding:.7rem 0;border-bottom:1px solid var(--border)}
+.ingredient:last-child{border-bottom:none}
+.dose{flex-shrink:0;font-weight:700;color:var(--gold);font-size:.9rem;min-width:58px}
+.ing-name{font-weight:600;color:var(--text);display:block;margin-bottom:.15rem}
+.footer{text-align:center;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted)}
+.footer .company{font-weight:600;color:var(--text);margin-bottom:.35rem}
+.disclaimer{margin-top:.85rem;opacity:.7;font-size:.72rem}
+.qr-card{margin-top:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center}
+.qr-card img{width:180px;height:180px;border-radius:12px;background:#fff;padding:8px;display:block;margin:0 auto .85rem}
+.qr-title{font-weight:600;font-size:.95rem;margin-bottom:.25rem;color:var(--text)}
+.qr-note{font-size:.78rem;color:var(--muted)}
+body:not(.lang-en) [data-lang=en]{display:none!important}
+body.lang-en [data-lang=zh]{display:none!important}
+body.lang-en [data-lang=en]{display:unset}
+</style>
 </head>
 <body>
-  <p><a href="landing.html">引貌餅 Gummy Baku</a></p>
+<div class="page">
+<div class="lang-switch"><div class="lang-btn">
+<button type="button" data-set-lang="zh" class="active">中文</button>
+<button type="button" data-set-lang="en">EN</button>
+</div></div>
+<header class="profile">
+<div class="avatar"><img src="logo.png" alt="Gummy Baku Logo" width="80" height="80" onerror="this.style.display='none';this.parentNode.textContent='🍬'"/></div>
+<h1 class="brand-name"><span data-lang="zh">引貘飴</span><span data-lang="en">Gummy Baku</span></h1>
+<p class="brand-sub"><span data-lang="zh">Gummy Baku · 眠夢工房</span><span data-lang="en">引貘飴 · Sleep Craft</span></p>
+<p class="bio"><span data-lang="zh">無褪黑激素的科學助眠軟糖。<br/>芝麻素 × 芹菜素雙路徑配方，支持放鬆與平靜的睡前儀式。</span><span data-lang="en">A melatonin-free science-backed sleep gummy.<br/>Sesamin × Apigenin dual-pathway formula to support relaxation and a calm bedtime ritual.</span></p>
+<div class="badges">
+<span class="badge"><span data-lang="zh">無褪黑激素</span><span data-lang="en">Melatonin-Free</span></span>
+<span class="badge"><span data-lang="zh">科學配方</span><span data-lang="en">Science-Backed</span></span>
+<span class="badge"><span data-lang="zh">睡前儀式</span><span data-lang="en">Bedtime Ritual</span></span>
+</div>
+</header>
+<div class="links">
+<a href="#waitlist" class="link-btn primary" id="waitlist-btn"><span>✦</span> <span data-lang="zh">加入等候名單</span><span data-lang="en">Join the Waitlist</span></a>
+<div class="section" id="product-section">
+<button class="section-toggle" type="button" aria-expanded="false"><span><span data-lang="zh">產品介紹</span><span data-lang="en">About the Product</span></span><span class="chevron">▼</span></button>
+<div class="section-body"><div class="section-content">
+<p data-lang="zh">引貘飴（Gummy Baku）是眠夢工房專為香港高壓專業人士研發的夜間支持軟糖。</p>
+<p data-lang="en">Gummy Baku is a night-time support gummy developed by Sleep Craft for high-pressure professionals in Hong Kong.</p>
+<h4 data-lang="zh">核心特點</h4><h4 data-lang="en">Key Features</h4>
+<p data-lang="zh">• 完全不含褪黑激素與藥物活性成分<br/>• 軟糖形式，把補充變成愉悅的睡前儀式<br/>• 定位為一般食品／膳食補充品<br/>• 委託具備 GHP / HACCP / ISO 22000 認證的合約製造商生產</p>
+<p data-lang="en">• Completely free of melatonin and pharmaceutical actives<br/>• Gummy format turns supplementation into an enjoyable bedtime ritual<br/>• Positioned as a general food / dietary supplement<br/>• Manufactured by partners holding GHP / HACCP / ISO 22000 certification</p>
+<h4 data-lang="zh">適合誰</h4><h4 data-lang="en">Who It’s For</h4>
+<p data-lang="zh">25–45 歲高壓在職專業人士、夜間易醒者、輪班工作者、常旅客，以及希望避免褪黑激素的消費者。</p>
+<p data-lang="en">Stressed working professionals aged 25–45, people with restless nights, shift workers, frequent travellers, and anyone seeking a non-melatonin option.</p>
+</div></div></div>
+<div class="section" id="ingredients-section">
+<button class="section-toggle" type="button" aria-expanded="false"><span><span data-lang="zh">科學配方</span><span data-lang="en">Science & Formula</span></span><span class="chevron">▼</span></button>
+<div class="section-body"><div class="section-content">
+<p data-lang="zh">雙目標核心（芝麻素 + 芹菜素）搭配鎂、L-茶胺酸與維生素 B6。</p>
+<p data-lang="en">Dual-target core of sesamin + apigenin, supported by magnesium, L-theanine and vitamin B₆.</p>
+<div class="ingredient"><span class="dose">160 mg</span><div><span class="ing-name" data-lang="zh">檸檬酸鎂</span><span class="ing-name" data-lang="en">Magnesium Citrate</span><span data-lang="zh">支持 NMDA 與 GABA 調節，生物利用率佳。</span><span data-lang="en">Supports NMDA/GABA modulation; good bioavailability.</span></div></div>
+<div class="ingredient"><span class="dose">150 mg</span><div><span class="ing-name" data-lang="zh">L-茶胺酸</span><span class="ing-name" data-lang="en">L-Theanine</span><span data-lang="zh">改善入睡與睡眠質素，無次日昏沉。</span><span data-lang="en">Improves sleep onset/quality without next-day sedation.</span></div></div>
+<div class="ingredient"><span class="dose">20 mg</span><div><span class="ing-name" data-lang="zh">維生素 B6</span><span class="ing-name" data-lang="en">Vitamin B₆</span><span data-lang="zh">GABA 與血清素合成輔因子。</span><span data-lang="en">Cofactor for GABA and serotonin synthesis.</span></div></div>
+<div class="ingredient"><span class="dose">15 mg</span><div><span class="ing-name" data-lang="zh">芹菜素</span><span class="ing-name" data-lang="en">Apigenin</span><span data-lang="zh">調節 GABA-A，微粉化提升吸收。</span><span data-lang="en">Modulates GABA-A; micronised for absorption.</span></div></div>
+<div class="ingredient"><span class="dose">47 mg</span><div><span class="ing-name" data-lang="zh">芝麻素</span><span class="ing-name" data-lang="en">Sesamin</span><span data-lang="zh">改善主觀睡眠質素與抗氧化狀態。</span><span data-lang="en">Supports subjective sleep quality and antioxidant status.</span></div></div>
+</div></div></div>
+<div class="section" id="why-section">
+<button class="section-toggle" type="button" aria-expanded="false"><span><span data-lang="zh">為什麼需要</span><span data-lang="en">Why It Matters</span></span><span class="chevron">▼</span></button>
+<div class="section-body"><div class="section-content">
+<p data-lang="zh">香港高壓工作節奏與深夜螢幕使用，令許多人睡眠不足。引貘飴提供非激素的科學替代方案。</p>
+<p data-lang="en">High work pressure and late-night screens leave many in Hong Kong with poor sleep. Gummy Baku offers a non-hormonal, science-informed alternative.</p>
+</div></div></div>
+<div class="section" id="waitlist">
+<button class="section-toggle" type="button" aria-expanded="false"><span><span data-lang="zh">留下電郵 · 搶先體驗</span><span data-lang="en">Leave Your Email · Get Early Access</span></span><span class="chevron">▼</span></button>
+<div class="section-body"><div class="section-content">
+<p style="margin-bottom:1rem" data-lang="zh">產品尚在規劃階段。留下電郵，成為首批收到消息的人。</p>
+<p style="margin-bottom:1rem" data-lang="en">Still in planning. Leave your email for updates and priority access.</p>
+<form id="waitlist-form" style="display:flex;flex-direction:column;gap:.7rem" onsubmit="event.preventDefault();document.getElementById('form-msg').style.display='block';this.reset();">
+<input id="email-input" type="email" required data-placeholder-zh="你的電郵地址" data-placeholder-en="Your email address" placeholder="你的電郵地址" style="width:100%;padding:.85rem 1rem;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.25);color:var(--text);font-family:inherit;font-size:.95rem"/>
+<button type="submit" style="width:100%;padding:.9rem;border-radius:12px;border:none;background:linear-gradient(135deg,#8ba4ff,#6b86e8);color:#0c1017;font-family:inherit;font-size:1rem;font-weight:600;cursor:pointer"><span data-lang="zh">提交</span><span data-lang="en">Submit</span></button>
+</form>
+<p id="form-msg" style="display:none;margin-top:.85rem;color:var(--gold);font-weight:500"><span data-lang="zh">感謝你的興趣！我們會盡快與你聯繫。</span><span data-lang="en">Thank you! We’ll be in touch soon.</span></p>
+</div></div></div>
+</div>
+<div class="qr-card">
+<img src="qr.png" alt="QR Code" width="180" height="180" onerror="this.style.display='none'"/>
+<div class="qr-title"><span data-lang="zh">掃碼開啟本頁</span><span data-lang="en">Scan to open this page</span></div>
+<p class="qr-note"><span data-lang="zh">https://player9002.github.io/gummy-baku/</span><span data-lang="en">https://player9002.github.io/gummy-baku/</span></p>
+</div>
+<footer class="footer">
+<div class="company"><span data-lang="zh">眠夢工房 Sleep Craft Co. Ltd.</span><span data-lang="en">Sleep Craft Co. Ltd. 眠夢工房</span></div>
+<p data-lang="zh">幫助香港高壓專業人士，以非激素方式睡得更好。</p>
+<p data-lang="en">Helping Hong Kong’s stressed professionals sleep better — without hormones.</p>
+<p class="disclaimer" data-lang="zh">本頁面僅供展示與規劃用途。產品尚未正式上市，不作任何治療宣稱。</p>
+<p class="disclaimer" data-lang="en">For display and planning only. Not yet commercially available. No medical claims.</p>
+</footer>
+</div>
+<script>
+const langButtons=document.querySelectorAll('[data-set-lang]');
+const emailInput=document.getElementById('email-input');
+function setLang(lang){document.body.classList.toggle('lang-en',lang==='en');document.documentElement.lang=lang==='en'?'en':'zh-Hant';langButtons.forEach(b=>b.classList.toggle('active',b.getAttribute('data-set-lang')===lang));if(emailInput){emailInput.placeholder=lang==='en'?emailInput.getAttribute('data-placeholder-en'):emailInput.getAttribute('data-placeholder-zh')}try{localStorage.setItem('gummy-baku-lang',lang)}catch(e){}}
+langButtons.forEach(b=>b.addEventListener('click',()=>setLang(b.getAttribute('data-set-lang'))));
+try{const s=localStorage.getItem('gummy-baku-lang');if(s==='en'||s==='zh')setLang(s)}catch(e){}
+document.querySelectorAll('.section-toggle').forEach(btn=>{btn.addEventListener('click',()=>{const section=btn.closest('.section');const isOpen=section.classList.contains('open');document.querySelectorAll('.section.open').forEach(s=>{if(s!==section){s.classList.remove('open');s.querySelector('.section-toggle').setAttribute('aria-expanded','false')}});section.classList.toggle('open',!isOpen);btn.setAttribute('aria-expanded',!isOpen)})});
+document.getElementById('waitlist-btn').addEventListener('click',e=>{e.preventDefault();const section=document.getElementById('waitlist');section.classList.add('open');section.querySelector('.section-toggle').setAttribute('aria-expanded','true');section.scrollIntoView({behavior:'smooth',block:'center'})});
+</script>
 </body>
 </html>
