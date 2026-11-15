@@ -123,40 +123,20 @@ body::before{
 .footer .company{font-weight:600;color:var(--text);margin-bottom:.4rem}
 .disclaimer{margin-top:.9rem;opacity:.7;font-size:.72rem;max-width:340px;margin-left:auto;margin-right:auto}
 
-/* Interactive mechanism items */
+/* Mechanism rows (simple, non-interactive) */
 .mech-intro{margin-bottom:1rem;font-weight:500;color:var(--gold);font-size:.95rem}
-.mech-item{
-  border:1px solid var(--border);border-radius:12px;margin-bottom:.55rem;
-  background:rgba(0,0,0,.15);overflow:hidden;transition:background .2s;
+.mech-row{
+  display:flex;gap:.75rem;padding:.8rem 0;
+  border-bottom:1px solid var(--border);
 }
-.mech-item:last-child{margin-bottom:0}
-.mech-item.open{background:rgba(255,255,255,.04)}
-.mech-head{
-  width:100%;display:flex;align-items:flex-start;gap:.75rem;
-  padding:.85rem 1rem;background:transparent;border:none;color:var(--text);
-  font-family:inherit;font-size:.9rem;cursor:pointer;text-align:left;
-}
-.mech-head:hover{background:rgba(255,255,255,.03)}
+.mech-row:last-child{border-bottom:none;padding-bottom:0}
 .mech-dose{
-  flex-shrink:0;font-weight:700;color:var(--gold);font-size:.85rem;
+  flex-shrink:0;font-weight:700;color:var(--gold);font-size:.9rem;
   min-width:54px;padding-top:.1rem;
 }
-.mech-main{flex:1;min-width:0}
 .mech-name{font-weight:600;color:var(--text);display:block;margin-bottom:.2rem}
-.mech-simple{color:var(--muted);font-size:.88rem;line-height:1.5}
-.mech-chevron{
-  flex-shrink:0;color:var(--muted);font-size:.75rem;transition:transform .25s;
-  padding-top:.15rem;
-}
-.mech-item.open .mech-chevron{transform:rotate(180deg)}
-.mech-detail{
-  max-height:0;overflow:hidden;transition:max-height .3s ease;
-  padding:0 1rem 0 calc(54px + 1.75rem);
-}
-.mech-item.open .mech-detail{max-height:120px;padding-bottom:.85rem}
-.mech-detail-text{color:var(--muted);font-size:.85rem;line-height:1.55;opacity:.9}
-body.lang-en .mech-simple{font-size:.86rem;line-height:1.55}
-body.lang-en .mech-detail-text{font-size:.84rem;line-height:1.6}
+.mech-simple{color:var(--muted);font-size:.9rem;line-height:1.55;display:block}
+body.lang-en .mech-simple{font-size:.88rem;line-height:1.6}
 
 /* Language toggle – critical fix for block vs inline */
 body:not(.lang-en) [data-lang=en]{display:none!important}
@@ -165,7 +145,9 @@ body.lang-en [data-lang=zh]{display:none!important}
 body.lang-en h4[data-lang=en],
 body.lang-en p[data-lang=en]{display:block!important}
 body.lang-en .ing-name[data-lang=en],
-body.lang-en .ing-desc[data-lang=en]{display:block!important}
+body.lang-en .ing-desc[data-lang=en],
+body.lang-en .mech-name[data-lang=en],
+body.lang-en .mech-simple[data-lang=en]{display:block!important}
 
 @media(max-width:380px){
   .page{padding:2rem 1rem 2.5rem}
@@ -302,98 +284,49 @@ body.lang-en .ing-desc[data-lang=en]{display:block!important}
           <span data-lang="en">Five routes. One pleasant gummy. No hormones.</span>
         </p>
 
-        <div class="mech-item">
-          <button class="mech-head" type="button" aria-expanded="false">
-            <span class="mech-dose">160 mg</span>
-            <div class="mech-main">
-              <span class="mech-name" data-lang="zh">檸檬酸鎂</span>
-              <span class="mech-name" data-lang="en">Magnesium Citrate</span>
-              <span class="mech-simple" data-lang="zh">幫助大腦關掉過度興奮，更容易安靜下來</span>
-              <span class="mech-simple" data-lang="en">Helps quiet an overactive mind so you can settle</span>
-            </div>
-            <span class="mech-chevron">▼</span>
-          </button>
-          <div class="mech-detail">
-            <div class="mech-detail-text">
-              <span data-lang="zh">支持 NMDA 阻斷與 GABA 路徑，並在軟糖中溶解性佳。</span>
-              <span data-lang="en">NMDA blockade and GABA support; dissolves well in a gummy.</span>
-            </div>
+        <div class="mech-row">
+          <span class="mech-dose">160 mg</span>
+          <div>
+            <span class="mech-name" data-lang="zh">檸檬酸鎂</span>
+            <span class="mech-name" data-lang="en">Magnesium Citrate</span>
+            <span class="mech-simple" data-lang="zh">幫助大腦關掉過度興奮，更容易安靜下來</span>
+            <span class="mech-simple" data-lang="en">Helps quiet an overactive mind so you can settle</span>
           </div>
         </div>
-
-        <div class="mech-item">
-          <button class="mech-head" type="button" aria-expanded="false">
-            <span class="mech-dose">150 mg</span>
-            <div class="mech-main">
-              <span class="mech-name" data-lang="zh">L-茶胺酸</span>
-              <span class="mech-name" data-lang="en">L-Theanine</span>
-              <span class="mech-simple" data-lang="zh">帶來放鬆但不昏沉的感覺，幫助自然入睡</span>
-              <span class="mech-simple" data-lang="en">Creates calm without drowsiness, so you ease into sleep</span>
-            </div>
-            <span class="mech-chevron">▼</span>
-          </button>
-          <div class="mech-detail">
-            <div class="mech-detail-text">
-              <span data-lang="zh">改善主觀入睡與睡眠質素，無次日昏沉。</span>
-              <span data-lang="en">Better subjective sleep onset and quality, no next-day sedation.</span>
-            </div>
+        <div class="mech-row">
+          <span class="mech-dose">150 mg</span>
+          <div>
+            <span class="mech-name" data-lang="zh">L-茶胺酸</span>
+            <span class="mech-name" data-lang="en">L-Theanine</span>
+            <span class="mech-simple" data-lang="zh">帶來放鬆但不昏沉的感覺，幫助自然入睡</span>
+            <span class="mech-simple" data-lang="en">Creates calm without drowsiness, so you ease into sleep</span>
           </div>
         </div>
-
-        <div class="mech-item">
-          <button class="mech-head" type="button" aria-expanded="false">
-            <span class="mech-dose">20 mg</span>
-            <div class="mech-main">
-              <span class="mech-name" data-lang="zh">維生素 B₆</span>
-              <span class="mech-name" data-lang="en">Vitamin B₆</span>
-              <span class="mech-simple" data-lang="zh">協助身體製造放鬆與好心情的訊息</span>
-              <span class="mech-simple" data-lang="en">Helps your body make the signals for calm and good mood</span>
-            </div>
-            <span class="mech-chevron">▼</span>
-          </button>
-          <div class="mech-detail">
-            <div class="mech-detail-text">
-              <span data-lang="zh">GABA 與血清素合成的重要輔因子。</span>
-              <span data-lang="en">Cofactor for GABA and serotonin synthesis.</span>
-            </div>
+        <div class="mech-row">
+          <span class="mech-dose">20 mg</span>
+          <div>
+            <span class="mech-name" data-lang="zh">維生素 B₆</span>
+            <span class="mech-name" data-lang="en">Vitamin B₆</span>
+            <span class="mech-simple" data-lang="zh">協助身體製造放鬆與好心情的訊息</span>
+            <span class="mech-simple" data-lang="en">Helps your body make the signals for calm and good mood</span>
           </div>
         </div>
-
-        <div class="mech-item">
-          <button class="mech-head" type="button" aria-expanded="false">
-            <span class="mech-dose">15 mg</span>
-            <div class="mech-main">
-              <span class="mech-name" data-lang="zh">芹菜素</span>
-              <span class="mech-name" data-lang="en">Apigenin</span>
-              <span class="mech-simple" data-lang="zh">支持大腦的休息模式，讓思緒慢下來</span>
-              <span class="mech-simple" data-lang="en">Supports the brain’s rest mode so thoughts slow down</span>
-            </div>
-            <span class="mech-chevron">▼</span>
-          </button>
-          <div class="mech-detail">
-            <div class="mech-detail-text">
-              <span data-lang="zh">涉及 CD38 / NAD⁺ 與 GABA-A 路徑；配方採用微粉化或載體技術。</span>
-              <span data-lang="en">CD38 / NAD⁺ and GABA-A pathways; needs micronisation or a carrier.</span>
-            </div>
+        <div class="mech-row">
+          <span class="mech-dose">15 mg</span>
+          <div>
+            <span class="mech-name" data-lang="zh">芹菜素</span>
+            <span class="mech-name" data-lang="en">Apigenin</span>
+            <span class="mech-simple" data-lang="zh">支持大腦的休息模式，讓思緒慢下來</span>
+            <span class="mech-simple" data-lang="en">Supports the brain’s rest mode so thoughts slow down</span>
           </div>
         </div>
-
-        <div class="mech-item">
-          <button class="mech-head" type="button" aria-expanded="false">
-            <span class="mech-dose">47 mg</span>
-            <div class="mech-main">
-              <span class="mech-name" data-lang="zh">芝麻素</span>
-              <span class="mech-name" data-lang="en">Sesamin</span>
-              <span class="mech-simple" data-lang="zh">減少身體的氧化壓力，支持更好的睡眠質素</span>
-              <span class="mech-simple" data-lang="en">Lowers everyday stress on the body, supporting better sleep</span>
-            </div>
-            <span class="mech-chevron">▼</span>
-          </button>
-          <div class="mech-detail">
-            <div class="mech-detail-text">
-              <span data-lang="zh">抗氧化支持與睡眠質素相關；需乳化以確保吸收。</span>
-              <span data-lang="en">Antioxidant support linked to sleep quality; needs emulsification.</span>
-            </div>
+        <div class="mech-row">
+          <span class="mech-dose">47 mg</span>
+          <div>
+            <span class="mech-name" data-lang="zh">芝麻素</span>
+            <span class="mech-name" data-lang="en">Sesamin</span>
+            <span class="mech-simple" data-lang="zh">減少身體的氧化壓力，支持更好的睡眠質素</span>
+            <span class="mech-simple" data-lang="en">Lowers everyday stress on the body, supporting better sleep</span>
           </div>
         </div>
       </div></div>
@@ -474,20 +407,6 @@ document.querySelectorAll(".section-toggle").forEach(btn=>{
       if(s!==section){s.classList.remove("open");s.querySelector(".section-toggle").setAttribute("aria-expanded","false")}
     });
     section.classList.toggle("open",!isOpen);
-    btn.setAttribute("aria-expanded",!isOpen);
-  });
-});
-document.querySelectorAll(".mech-head").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const item=btn.closest(".mech-item");
-    const isOpen=item.classList.contains("open");
-    document.querySelectorAll(".mech-item.open").forEach(el=>{
-      if(el!==item){
-        el.classList.remove("open");
-        el.querySelector(".mech-head").setAttribute("aria-expanded","false");
-      }
-    });
-    item.classList.toggle("open",!isOpen);
     btn.setAttribute("aria-expanded",!isOpen);
   });
 });
